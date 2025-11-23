@@ -57,6 +57,12 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	if (player.points.gte(2.82e57)) {
+			"Well... come"
+    },
+	if ((player.points.lte(2.37e52)) && (player.points.gte(6.68e59))) {
+			"If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59))) + " protons."
+    }
 ]
 
 // Determines when the game "ends"
