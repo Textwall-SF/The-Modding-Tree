@@ -28,7 +28,12 @@ addLayer("sy", {
 		3: {
             requirementDescription: "1.00e13 Cz.",
             effectDescription: "Unlock TCOH's Shop",
-            done() { return player.points.gte(5e13) }
+            done() { return player.points.gte(1e13) }
+        },
+		4: {
+            requirementDescription: "1.00e20 Cz.",
+            effectDescription: "Unlock Enchanted shop upgrades",
+            done() { return player.points.gte(1e20) }
         },
     }
 })
