@@ -1,29 +1,24 @@
 let modInfo = {
-	name: "The Textwall Tree",
-	author: "9/11 User",
-	pointsName: "points",
-	modFiles: ["layers.js", "tree.js"],
+	name: "cz. : the tree",
+	author: "ReanultFan Auth.",
+	pointsName: "craziness points",
+	modFiles: ["layers/cz.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1000,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1.1",
-	name: "Uni 1",
+	num: "0.0.1",
+	name: "Cz. starting",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-    <h3>v0.0.1.1 - Uni 1</h3><br>
-		- Added 2 upgrades.<br>
-        - Endgame: 100,000,000 points.
-	<h3>v0.0.1 - Start of Textwall</h3><br>
-		- Added Chars.<br>
-		- Added 3 upgrades.<br>
-        - Endgame: 1,000 points.`
+	<h3>v0.0.1 - Start of Cz.</h3><br>
+		- Added Cz.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -46,11 +41,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(0)
-	if (hasUpgrade('c', 11)) gain = gain.add(1)
-	if (hasUpgrade('c', 12)) gain = gain.add(2)
-	if (hasUpgrade('c', 13)) gain = gain.times(upgradeEffect('c', 13))
-	if (hasUpgrade('c', 21)) gain = gain.times(5)
-	if (hasUpgrade('c', 22)) gain = gain.times(2)
+	if (hasUpgrade('cz', 11)) gain = gain.add(1)
 	return gain
 }
 
@@ -64,7 +55,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("100000000"))
+	return player.points.gte(new Decimal("e280000000"))
 }
 
 
