@@ -70,11 +70,11 @@ var displayThings = [
 	function() {
     display = ""
 	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
-			display = display + "Tip: Stuck? Buy upgrades."
-    }
+			display = display + "Stuck?"
+    },
 	if ((player.points.lte(2.37e62)) && (player.points.gte(6.68e59))) {
 			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59))) + " protons."
-    }
+    },
 	return display
   }
 ]
