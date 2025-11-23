@@ -86,7 +86,13 @@ var displayThings = [
 			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(1.71e75)) + " Hydrogen atoms."
 	}
 	if ((player.points.lte(2.13e88)) && (player.points.gte(1.18e84))) {
-			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(1.18e84)) + " protons."
+			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(1.18e84)) + " viruses."
+	}
+	if ((player.points.lte(1.47e94)) && (player.points.gte(2.13e88))) {
+			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(2.13e88)) + " red blood cells."
+	}
+	if ((player.points.lte(1.18e97)) && (player.points.gte(1.47e94))) {
+			display = display + "If every Cz. was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of sand."
 	}
 	return display
   },
