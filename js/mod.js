@@ -2,7 +2,7 @@ let modInfo = {
 	name: "cz. : the tree",
 	author: "ReanultFan Auth.",
 	pointsName: "craziness points",
-	modFiles: ["layers/cz.js", "layers/system_center.js", "tree.js"],
+	modFiles: ["layers/cz.js", "layers/system_center.js", "layers/shop.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -54,6 +54,8 @@ function getPointGen() {
 	if (hasUpgrade('cz', 33)) gain = gain.times(upgradeEffect('cz',33))
 	// System Center
 	if (hasMilestone('sy', 1)) gain = gain.pow(1.2)
+	// Shop
+	if (hasUpgrade('ts', 11)) gain = gain.times(upgradeEffect('ts',11))
 	return gain
 }
 
