@@ -7,7 +7,6 @@ addLayer("cz", {
 		points: new Decimal(0),
     }},
     color: "#eeeeee",
-	tooltip: "Main Cz.",
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     upgrades: {
