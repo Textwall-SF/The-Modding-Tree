@@ -6,7 +6,7 @@ addLayer("sy", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#ff1100",
+    color: "#ff0000",
 	tooltip: "System Center",
     row: 0, // Row the layer is in on the tree (0 is the first row)
     layerShown(){
@@ -17,7 +17,7 @@ addLayer("sy", {
     milestones: {
         1: {
             requirementDescription: "1.00e9 Cz.",
-            effectDescription: "x6 Cz, ^1.01 Cz.",
+            effectDescription: "^1.2 Cz.",
             done() { return player.points.gte(1e9) }
         },
 		2: {
