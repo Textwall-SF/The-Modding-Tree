@@ -72,7 +72,7 @@ addLayer("cz", {
 	  24: {
         title: "System Center?",
         description: "Unlock Miletones. 4DC_H grand opening!",
-        cost: new Decimal(1e8),
+        cost: new Decimal(5e6),
         currencyDisplayName: "Cz.",
         currencyInternalName: "points",
 		unlocked() { return hasUpgrade("cz", 23); },
