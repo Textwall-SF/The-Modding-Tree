@@ -39,7 +39,7 @@ addLayer("p", {
         title: "Test Upgrade #2",
         description: "Testing #2",
 		effect() {
-            return player.points.add(1).pow(1.25)
+            return player.points.add(1).pow(0.5)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         cost: new Decimal(10)
