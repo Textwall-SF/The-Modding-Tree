@@ -55,6 +55,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 12)
         },
+		},
 	    14: {
         title: "Adding",
         description: "Add +20 to point base",
@@ -62,6 +63,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 13)
         },
+		},
 		21: {
         title: "More boosts!",
         description: "Boosts points at rate",
@@ -82,6 +84,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 21)
         },
+		},
 		23: {
         title: "Base Shifting",
         description: "*1.5 point gain",
@@ -89,6 +92,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 22)
         },
+		},
 		24: {
         title: "Stacking up",
         description: "*3 point gain",
@@ -96,6 +100,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 23)
         },
+		},
 		31: {
         title: "New Walls?",
         description: "*3 point gain",
@@ -103,6 +108,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 24)
         },
+		},
 		32: {
         title: "Leap up",
         description: "*2 prestige point gain",
@@ -110,6 +116,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 31)
         },
+		},
 		33: {
         title: "Point Booster 1",
         description: "*2 point gain",
@@ -117,6 +124,7 @@ addLayer("p", {
 		unlocked() {
                 return hasUpgrade('p', 32)
         },
+		},
 		34: {
         title: "Enter the... TextWall",
         description: "Unlock Walls layer",
