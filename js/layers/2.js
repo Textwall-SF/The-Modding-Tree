@@ -26,7 +26,7 @@ addLayer("w", {
     hotkeys: [
         {key: "w", description: "W: walls", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasUpgrade("p",34)},
+    layerShown(){return hasUpgrade("p",34) || player.w.unlocked},
 	upgrades: {
 		11: {
 			title: "TextWall, Start!",
