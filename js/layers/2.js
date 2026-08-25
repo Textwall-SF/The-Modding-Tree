@@ -3,7 +3,7 @@ addLayer("w", {
     symbol: "W", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
     }},
     color: "#00FFFF",
@@ -16,6 +16,7 @@ addLayer("w", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade('w', 23)) mult = mult.times(3)
+		if (hasUpgrade('w', 33)) mult = mult.times(2.022)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -82,6 +83,34 @@ addLayer("w", {
 			description: "*100 point gain",
 			cost: new Decimal(80),
 			unlocked() {return hasUpgrade("w",23)}
+		},
+		31: {
+			title: "Self-Synergism",
+			description: "Boost prestige points an some substance rate",
+			cost: new Decimal(170),
+			effect() {
+            return player.w.points.add(1).pow(0.12)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+			unlocked() {return hasUpgrade("w",24)}
+		},
+		32: {
+			title: "New Upgrades???",
+			description: "Unlock new prestige upgrades",
+			cost: new Decimal(300),
+			unlocked() {return hasUpgrade("w",31)}
+		},
+		33: {
+			title: "2022",
+			description: "*2.022 Walls. Entering the most eras!",
+			cost: new Decimal(5000),
+			unlocked() {return hasUpgrade("w",32)}
+		},
+		32: {
+			title: "Textcoins",
+			description: "Unlock Textcoins.",
+			cost: new Decimal(5e5),
+			unlocked() {return hasUpgrade("w",33)}
 		},
 	}
 })
