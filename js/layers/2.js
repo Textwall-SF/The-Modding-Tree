@@ -59,7 +59,7 @@ addLayer("w", {
 		21: {
 			title: "2020 Textwall",
 			description: "+2020 point gain base",
-		    tooltip: "Textwall was created in 2020"",
+		    tooltip: "Textwall was created in 2020",
 			cost: new Decimal(7),
 			unlocked() {return hasUpgrade("w",14)}
 		},
