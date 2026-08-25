@@ -1,8 +1,8 @@
 let modInfo = {
 	name: "The Textwall Tree",
-	author: "???",
+	author: "Textwall-SF",
 	pointsName: "points",
-	modFiles: ["layers/1.js", "tree.js"],
+	modFiles: ["layers/1.js", "layers/2.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -48,6 +48,11 @@ function getPointGen() {
 	if (hasUpgrade('p',13)) gain = gain.times(2)
 	if (hasUpgrade('p',14)) gain = gain.add(20)
 	if (hasUpgrade('p',21)) gain = gain.times(upgradeEffect('p',21))
+	if (hasUpgrade('p',22)) gain = gain.times(2)
+	if (hasUpgrade('p',23)) gain = gain.times(1.5)
+	if (hasUpgrade('p',24)) gain = gain.times(3)
+	if (hasUpgrade('p',31)) gain = gain.times(3)
+	if (hasUpgrade('p',33)) gain = gain.times(2)
 	return gain
 }
 
