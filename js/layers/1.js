@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
 		if (hasUpgrade(this.layer, 32)) mult = mult.times(2)
 		if (hasUpgrade("w", 23)) mult = mult.times(5)
+		if (hasUpgrade("w", 31)) mult = mult.times(upgradeEffect('w',31))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -132,6 +133,38 @@ addLayer("p", {
 		cost: new Decimal(5000),
 		unlocked() {
                 return hasUpgrade('p', 33)
+        },
+		},
+		41: {
+        title: "The new start",
+        description: "*5 point gain",
+		cost: new Decimal(1e12),
+		unlocked() {
+                return hasUpgrade('w', 32)
+        },
+		},
+		42: {
+        title: "There is new textwallers?",
+        description: "*2.5 prestige point gain",
+		cost: new Decimal(5e12),
+		unlocked() {
+                return hasUpgrade('p', 41)
+        },
+		},
+		43: {
+        title: "Point Booster 2",
+        description: "*7 point gain",
+		cost: new Decimal(9e13),
+		unlocked() {
+                return hasUpgrade('p', 42)
+        },
+		},
+		44: {
+        title: "Universal Reconstruct",
+        description: "*3.3 point gain",
+		cost: new Decimal(1e15),
+		unlocked() {
+                return hasUpgrade('p', 43)
         },
 	  },
 	}
