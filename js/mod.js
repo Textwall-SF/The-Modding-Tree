@@ -12,11 +12,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.011",
+	num: "#0.013",
 	name: "Textwall Tree",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>#0.013</h3><br>
+	    - Added 8 new upgrades.<br>
+		- Endgame: 500,000 walls<br>
 	<h3>#0.011</h3><br>
 		- 2 Prestige Layers: Prestige Points, walls.<br>
 		- Added 20 new upgrades.<br>
@@ -113,7 +116,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.w.points.gte(new Decimal(250))
+	return player.w.points.gte(new Decimal(5e5))
 }
 
 
