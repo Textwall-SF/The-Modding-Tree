@@ -95,7 +95,7 @@ var displayThings = [
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("2.37e65104")) + " Time Dimensions."
 	}
 	if ((player.points.gte("1e100000")) && (player.points.lte("10^^1.79e308"))) {
-			display = display + "If you wrote 3 numbers per second, writing down your point amount will need " + formatTime(player.points.add(1).log10() / 3) + "; to write down your point amount."
+			display = display + "If you wrote 1 number per second, writing down your point amount will need " + formatTime(player.points.add(1).log10()) + "; to write down your point amount."
 	}
 	return display
   },
