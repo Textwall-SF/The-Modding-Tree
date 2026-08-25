@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#fcfcfc",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if(hasUpgrade(this.layer, 33)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -27,22 +28,102 @@ addLayer("p", {
     layerShown(){return true},
 	upgrades: {
 		11: {
-        title: "Test Upgrade",
-        description: "Testing",
+        title: "Starting point",
+        description: "Boost points by specific effect",
 		effect() {
-            return player.points.add(1).pow(0.75)
+            return player.points.add(1).pow(0.2)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         cost: new Decimal(1)
-	  },
+	},
 		12: {
-        title: "Test Upgrade #2",
-        description: "Testing #2",
+        title: "New wall",
+        description: "Boosts points by subsequent rate",
 		effect() {
-            return player.points.add(1).pow(0.5)
+            return player.points.add(1).pow(0.2)
         },
         effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
-        cost: new Decimal(10)
+        cost: new Decimal(2),
+		unlocked() {
+                return hasUpgrade('p', 11)
+        },
+	},
+		13: {
+        title: "Extender",
+        description: "Boosts points by *5",
+		cost: new Decimal(5),
+		unlocked() {
+                return hasUpgrade('p', 12)
+        },
+	    14: {
+        title: "Adding",
+        description: "Add +20 to point base",
+		cost: new Decimal(15),
+		unlocked() {
+                return hasUpgrade('p', 13)
+        },
+		21: {
+        title: "More boosts!",
+        description: "Boosts points at rate",
+		tooltip: "return player.points.add(1).pow(0.3)",
+		cost: new Decimal(40),
+		unlocked() {
+                return hasUpgrade('p', 14)
+        },
+		effect() {
+            return player.points.add(1).pow(0.3)
+        },
+        effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+		},
+		22: {
+        title: "Multipliers",
+        description: "*2 point gain",
+		cost: new Decimal(75),
+		unlocked() {
+                return hasUpgrade('p', 21)
+        },
+		23: {
+        title: "Base Shifting",
+        description: "*1.5 point gain",
+		cost: new Decimal(130),
+		unlocked() {
+                return hasUpgrade('p', 22)
+        },
+		24: {
+        title: "Stacking up",
+        description: "*3 point gain",
+		cost: new Decimal(300),
+		unlocked() {
+                return hasUpgrade('p', 23)
+        },
+		31: {
+        title: "New Walls?",
+        description: "*3 point gain",
+		cost: new Decimal(620),
+		unlocked() {
+                return hasUpgrade('p', 24)
+        },
+		32: {
+        title: "Leap up",
+        description: "*2 prestige point gain",
+		cost: new Decimal(1000),
+		unlocked() {
+                return hasUpgrade('p', 31)
+        },
+		33: {
+        title: "Point Booster 1",
+        description: "*2 point gain",
+		cost: new Decimal(2200),
+		unlocked() {
+                return hasUpgrade('p', 32)
+        },
+		34: {
+        title: "Enter the... TextWall",
+        description: "Unlock Walls layer",
+		cost: new Decimal(5000),
+		unlocked() {
+                return hasUpgrade('p', 33)
+        },
 	  },
 	}
 })
