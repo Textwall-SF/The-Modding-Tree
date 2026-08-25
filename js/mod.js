@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The_Tree",
+	name: "The Textwall Tree",
 	author: "???",
 	pointsName: "points",
 	modFiles: ["layers/1.js", "tree.js"],
@@ -12,13 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1",
-	name: "Start_1",
+	num: "#0.011",
+	name: "Textwall Tree",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0.1</h3><br>
-		- Added Cz.`
+	<h3>#0.011</h3><br>
+		- 2 Prestige Layers: Prestige Points, walls.<br>
+		- Added 17 new upgrades.<br>
+		- Endgame: 400 walls`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -43,6 +45,9 @@ function getPointGen() {
 	let gain = new Decimal(1)
 	if (hasUpgrade('p',11)) gain = gain.times(upgradeEffect('p',11))
 	if (hasUpgrade('p',12)) gain = gain.times(upgradeEffect('p',12))
+	if (hasUpgrade('p',13)) gain = gain.times(2)
+	if (hasUpgrade('p',14)) gain = gain.add(20)
+	if (hasUpgrade('p',21)) gain = gain.times(upgradeEffect('p',21))
 	return gain
 }
 
@@ -78,23 +83,14 @@ var displayThings = [
 	if ((player.points.lte("4.26e412")) && (player.points.gte("2.37e217"))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.37e217)) + " Dimensions."
 	}
-	if ((player.points.lte("1e1000")) && (player.points.gte("4.26e412"))) {
+	if ((player.points.lte("2.37e65104")) && (player.points.gte("4.26e412"))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("4.26e412")) + " Infinity Dimensions."
-	}
-	if ((player.points.lte("1e2000")) && (player.points.gte("1e1000"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("1.00e1000")) + " Timeverses. That's MTGFF content!"
-	}
-	if ((player.points.lte("1e10000")) && (player.points.gte("1e2000"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("1.00e2000")) + " Timeverses+. That's MTGFF content!"
-	}
-	if ((player.points.lte("2.37e65104")) && (player.points.gte("1e10000"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("1e10000")) + " Timeverses++. That's MTGFF content!"
 	}
 	if ((player.points.lte("1e100000")) && (player.points.gte("2.37e65104"))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("2.37e65104")) + " Time Dimensions."
 	}
-	if ((player.points.gte("1e100000")) && (player.points.lte("e70e9"))) {
-			display = display + "If you wrote 3 numbers per second, writing down your point amount will need " + formatTime(player.points.add(3).log10()) + "; to write down your point amount."
+	if ((player.points.gte("1e100000")) && (player.points.lte("10^^1.79e308"))) {
+			display = display + "If you wrote 3 numbers per second, writing down your point amount will need " + formatTime(player.points.add(1).log10() / 3) + "; to write down your point amount."
 	}
 	return display
   },
@@ -102,7 +98,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.w.points.gte(new Decimal(400))
 }
 
 
