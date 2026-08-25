@@ -60,6 +60,9 @@ function getPointGen() {
 	if (hasUpgrade('w',21)) gain = gain.add(2020)
 	if (hasUpgrade('w',22)) gain = gain.times(2.021)
 	if (hasUpgrade('w',24)) gain = gain.times(100)
+	if (hasUpgrade('p',41)) gain = gain.times(5)
+	if (hasUpgrade('p',43)) gain = gain.times(7)
+	if (hasUpgrade('p',44)) gain = gain.times(3.3)
 	return gain
 }
 
