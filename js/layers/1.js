@@ -67,7 +67,7 @@ addLayer("p", {
 		21: {
         title: "More boosts!",
         description: "Boosts points at rate",
-		tooltip: "return player.points.add(1).pow(0.3)",
+		tooltip: "return player.points.add(1).pow(0.2)",
 		cost: new Decimal(40),
 		unlocked() {
                 return hasUpgrade('p', 14)
