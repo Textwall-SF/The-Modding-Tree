@@ -106,7 +106,7 @@ addLayer("w", {
 			cost: new Decimal(5000),
 			unlocked() {return hasUpgrade("w",32)}
 		},
-		32: {
+		34: {
 			title: "Textcoins",
 			description: "Unlock Textcoins.",
 			cost: new Decimal(5e5),
