@@ -15,13 +15,13 @@ addLayer("w", {
     exponent: 0.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-		if (hasUpgrade(this.layer, 23)) mult = mult.times(3)
+		if (hasUpgrade('w', 23)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    branches: ["p"],
+    branches: ['p'],
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "w", description: "W: walls", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -30,12 +30,12 @@ addLayer("w", {
 	upgrades: {
 		11: {
 			title: "TextWall, Start!",
-			description: "+100 point base".
+			description: "+100 point base",
 			cost: new Decimal(1)
 		},
 		12: {
 			title: "Login / Register",
-			description: "Walls boost points.".
+			description: "Walls boost points.",
 			cost: new Decimal(2),
 			effect() {
             return player.w.points.add(1).pow(0.4)
