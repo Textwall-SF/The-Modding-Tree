@@ -19,10 +19,13 @@ addLayer("p", {
 		if (hasUpgrade("w", 23)) mult = mult.times(5)
 		if (hasUpgrade("w", 31)) mult = mult.times(upgradeEffect('w',31))
 		if (hasUpgrade(this.layer, 42)) mult = mult.times(2.5)
+		if (hasChallenge("t", 11)) gain = gain.times(66.66)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+		exp = new Decimal(1)
+		if(inChallenge("t",11)) exp = exp.pow(0.25)
+        return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
