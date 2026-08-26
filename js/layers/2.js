@@ -28,6 +28,12 @@ addLayer("w", {
         {key: "w", description: "W: walls", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return hasUpgrade("p",34) || player.w.unlocked},
+	infoboxes:{
+            lore: {
+                title: "Important notice",
+                body: "<b>So, removed some of the confusion. Also, I AM NOT NullArea, I AM Textwall-SF!</b><br> Welcome to the first layer, Prestige. Goal is to get a lot of points. <br> <i>The179UCETile, qwas and anon responded in tw.2s4.me so the game is confusing and later it updated for not confusing at all.</i>",
+            }
+        },
 	upgrades: {
 		11: {
 			title: "TextWall, Start!",
