@@ -206,7 +206,7 @@ addLayer("t", {
         challengeDescription: "Prestige Points are nerfed to ^0.25",
         goalDescription: "???",
         rewardDescription: "x66.66 prestige points.",
-        canComplete: function() {return player.points.gte(138)},
+        canComplete: function() {return player.p.points.gte(138)},
     },
 	}
 })
