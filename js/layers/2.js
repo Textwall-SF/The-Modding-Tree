@@ -128,7 +128,7 @@ addLayer("t", {
     baseResource: "prestige points", // Name of resource prestige is based on
     baseAmount() {return player.p.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.01, // Prestige currency exponent
+    exponent: 0.09, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
@@ -197,7 +197,7 @@ addLayer("t", {
                 "blank",
                 "challenges"
             ],
-			unlocked: function() {return hasUpgrade("t",34)}
+			unlocked: function() {return hasUpgrade("t",21)}
         },
 	},
 	challenges: {
@@ -206,7 +206,7 @@ addLayer("t", {
         challengeDescription: "Prestige Points are nerfed to ^0.25",
         goalDescription: "???",
         rewardDescription: "x66.66 prestige points.",
-        canComplete: function() {return player.points.gte("10^^1.79e308")},
+        canComplete: function() {return player.points.gte(138)},
     },
 	}
 })
