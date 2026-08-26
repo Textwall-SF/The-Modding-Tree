@@ -40,10 +40,8 @@ addLayer("p", {
     },
 	infoboxes:{
             lore: {
-                title: "Prestige",
-                titleStyle: {'color': '#8d8d8d'},
-                body: "<b>So, removed some of the confusion. Also, I AM NOT NullArea, I AM Textwall-SF!</b><br> Welcome to the first layer, Prestige. Goal is to get a lot of points. <br> <i>T179UCET, qwas and anon responeded in tw.2s4.me so the game is confusing and later it updated and no confusion</i>",
-                bodyStyle: {'background-color': "#313131"}
+                title: "Important notice",
+                body: "<b>So, removed some of the confusion. Also, I AM NOT NullArea, I AM Textwall-SF!</b><br> Welcome to the first layer, Prestige. Goal is to get a lot of points. <br> <i>The179UCETile, qwas and anon responded in tw.2s4.me so the game is confusing and later it updated for not confusing at all.</i>",
             }
         },
 	upgrades: {
