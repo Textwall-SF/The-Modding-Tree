@@ -17,6 +17,8 @@ addLayer("w", {
         mult = new Decimal(1)
 		if (hasUpgrade('w', 23)) mult = mult.times(3)
 		if (hasUpgrade('w', 33)) mult = mult.times(2.022)
+		if (hasUpgrade('w', 42)) mult = mult.times(3)
+		if (hasUpgrade('w', 44)) mult = mult.times(upgradeEffect('w',44))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -112,6 +114,34 @@ addLayer("w", {
 			cost: new Decimal(5e5),
 			unlocked() {return hasUpgrade("w",33)}
 		},
+		41: {
+			title: "Wall Upgrade #13",
+			description: "*4 points.",
+			cost: new Decimal(5e8),
+			unlocked() {return hasUpgrade("t",33)}
+		},
+		42: {
+			title: "Textwall in a wall?",
+			description: "*3 wall multiplier.",
+			cost: new Decimal(1e9),
+			unlocked() {return hasUpgrade("w",41)}
+		},
+		43: {
+			title: "Multiplier III",
+			description: "*3.3333 points.",
+			cost: new Decimal(3e9),
+			unlocked() {return hasUpgrade("w",32)}
+		},
+		44: {
+			title: "Re-surface",
+			description: "Boost walls based on walls.",
+			cost: new Decimal(6.6e9),
+			effect() {
+            return player.w.points.add(1).pow(0.21)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+			unlocked() {return hasUpgrade("w",33)}
+		},
 	}
 })
 addLayer("t", {
@@ -131,6 +161,7 @@ addLayer("t", {
     exponent: 0.09, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+		if (hasChallenge('t', 12)) mult = mult.times(4)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -178,6 +209,30 @@ addLayer("t", {
 			cost: new Decimal(100),
 			unlocked() {return hasUpgrade("t",22)}
 		},
+		31: {
+			title: "Second Challenge",
+			description: "Unlock Challenge 2",
+			cost: new Decimal(250),
+			unlocked() {return hasUpgrade("t",23)}
+		},
+		32: {
+			title: "Textwall: Recrumbled",
+			description: "^1.01 Prestige points gain.",
+			cost: new Decimal(400),
+			unlocked() {return hasUpgrade("t",31)}
+		},
+		33: {
+			title: "Time for new upgrades",
+			description: "Unlock new wall upgrades",
+			cost: new Decimal(800),
+			unlocked() {return hasUpgrade("t",32)}
+		},
+		41: {
+			title: "A new way of typing",
+			description: "Unlock chars.",
+			cost: new Decimal(6e3),
+			unlocked() {return hasUpgrade("t",33)}
+		},
 	},
 	tabFormat: {
         "Upgrades": {
@@ -200,13 +255,21 @@ addLayer("t", {
 			unlocked: function() {return hasUpgrade("t",21)}
         },
 	},
-	challenges: {
-    11: {
+	challenges: { 
+        11: {
         name: "Fire Incident",
         challengeDescription: "Prestige Points are nerfed to ^0.25",
-        goalDescription: "???",
+        goalDescription: "2,000 prestige points",
         rewardDescription: "x66.66 prestige points.",
-        canComplete: function() {return player.p.points.gte(138)},
+        canComplete: function() {return player.p.points.gte(2e3)},
+    },
+		12: {
+        name: "Textwall: Grief",
+        challengeDescription: "Points are nerfed to ^0.1",
+        goalDescription: "1,000 points",
+        rewardDescription: "^1.01 points and x4 textcoins",
+        canComplete: function() {return player.points.gte(1e3)},
+		unlocked() {return hasUpgrade("t",31)}
     },
 	}
 })
