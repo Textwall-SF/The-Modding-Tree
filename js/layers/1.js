@@ -29,6 +29,12 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+	autoUpgrade(){return hasUpgrade("t",12)},
+	passiveGeneration() {
+        let Gen = 0
+        if(hasUpgrade('t',13)) Gen = 1
+        return Gen
+    },
 	upgrades: {
 		11: {
         title: "Starting point",
