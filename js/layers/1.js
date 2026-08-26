@@ -40,8 +40,8 @@ addLayer("p", {
     },
 	upgrades: {
 		11: {
-        title: "Starting point",
-        description: "Boost points by specific effect",
+        title: "The Start",
+        description: "Points boosted on points.",
 		effect() {
             return player.points.add(1).pow(0.2)
         },
@@ -50,7 +50,7 @@ addLayer("p", {
 	},
 		12: {
         title: "New wall",
-        description: "Boosts points by subsequent rate",
+        description: "Points boosted on points, again.",
 		effect() {
             return player.points.add(1).pow(0.2)
         },
@@ -78,7 +78,7 @@ addLayer("p", {
 		},
 		21: {
         title: "More boosts!",
-        description: "Boosts points at rate",
+        description: "Points boosted by points, again twice.",
 		tooltip: "return player.points.add(1).pow(0.2)",
 		cost: new Decimal(40),
 		unlocked() {
@@ -130,7 +130,7 @@ addLayer("p", {
         },
 		},
 		33: {
-        title: "Point Booster 1",
+        title: "Point Booster I",
         description: "*2 point gain",
 		cost: new Decimal(2200),
 		unlocked() {
@@ -138,8 +138,8 @@ addLayer("p", {
         },
 		},
 		34: {
-        title: "Enter the... TextWall",
-        description: "Unlock Walls layer",
+        title: "Enter the... TextWall!",
+        description: "Unlock Walls layer.",
 		cost: new Decimal(5000),
 		unlocked() {
                 return hasUpgrade('p', 33)
@@ -154,7 +154,7 @@ addLayer("p", {
         },
 		},
 		42: {
-        title: "There is new textwallers?",
+        title: "NEW TEXTWALLERS?",
         description: "*2.5 prestige point gain",
 		cost: new Decimal(5e12),
 		unlocked() {
@@ -162,7 +162,7 @@ addLayer("p", {
         },
 		},
 		43: {
-        title: "Point Booster 2",
+        title: "Point Booster II",
         description: "*7 point gain",
 		cost: new Decimal(9e13),
 		unlocked() {
@@ -170,7 +170,7 @@ addLayer("p", {
         },
 		},
 		44: {
-        title: "Universal Reconstruct",
+        title: "Universal Reconstructing",
         description: "*3.3 point gain",
 		cost: new Decimal(1e15),
 		unlocked() {
