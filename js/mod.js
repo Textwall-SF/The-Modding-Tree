@@ -12,11 +12,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.013",
-	name: "Textwall Tree",
+	num: "#0.021",
+	name: "Textcoins",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>#0.021</h3><br>
+	    - Added 6 new upgrades.<br>
+		- Added Textcoins layer.<br>
+		- Added 1 challenge.<br>
+		- Endgame: 500 Textcoins<br>
     <h3>#0.013</h3><br>
 	    - Added 8 new upgrades.<br>
 		- Endgame: 500,000 walls<br>
@@ -66,6 +71,10 @@ function getPointGen() {
 	if (hasUpgrade('p',41)) gain = gain.times(5)
 	if (hasUpgrade('p',43)) gain = gain.times(7)
 	if (hasUpgrade('p',44)) gain = gain.times(3.3)
+	if (hasUpgrade('t',11)) gain = gain.times(6)
+	if (hasUpgrade('t',22)) gain = gain.pow(1.01)
+	if (hasUpgrade('t',23)) gain = gain.times(7)
+	if (hasUpgrade('t',23)) gain = gain.div(2.5)
 	return gain
 }
 
@@ -78,7 +87,7 @@ var displayThings = [
 	function() {
     display = ""
 	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
-			display = display + "Stuck?"
+			display = display + "Stuck? Endgame: 500 textcoins"
     }
 	if ((player.points.lte(2.37e62)) && (player.points.gte(6.68e59))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59)) + " protons."
@@ -116,7 +125,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.w.points.gte(new Decimal(5e5))
+	return player.t.points.gte(new Decimal(500))
 }
 
 
