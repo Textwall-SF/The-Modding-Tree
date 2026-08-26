@@ -151,17 +151,62 @@ addLayer("t", {
 		12: {
 			title: "Automation I",
 			description: "Automate prestige upgrades.",
-			cost: new Decimal(2)
+			cost: new Decimal(2),
+			unlocked() {return hasUpgrade("t",11)}
 		},
 		13: {
 			title: "Automation II",
 			description: "Passively gain 1% of Prestige Points per second.",
-			cost: new Decimal(5)
+			cost: new Decimal(5),
+			unlocked() {return hasUpgrade("t",12)}
 		},
 		21: {
 			title: "Challenge?",
 			description: "Unlock Challenges",
-			cost: new Decimal(15)
+			cost: new Decimal(15),
+			unlocked() {return hasUpgrade("t",13)}
 		},
+		22: {
+			title: "Accelerated",
+			description: "^1.01 Point gain",
+			cost: new Decimal(40),
+			unlocked() {return hasUpgrade("t",21)}
+		},
+		23: {
+			title: "Exchanger I",
+			description: "*7 points, but /2.5 points",
+			cost: new Decimal(100),
+			unlocked() {return hasUpgrade("t",22)}
+		},
+	},
+	tabFormat: {
+        "Upgrades": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                "blank",
+                "upgrades"
+            ],
+        },
+		"Challenges": {
+            content: [
+                "main-display",
+                "prestige-button",
+                "resource-display",
+                "blank",
+                "challenges"
+            ],
+			unlocked: function() {return hasUpgrade("t",34)}
+        },
+	},
+	challenges: {
+    11: {
+        name: "Fire Incident",
+        challengeDescription: "Prestige Points are nerfed to ^0.25",
+        goalDescription: "???",
+        rewardDescription: "x66.66 prestige points.",
+        canComplete: function() {return player.points.gte("10^^1.79e308")},
+    },
 	}
 })
