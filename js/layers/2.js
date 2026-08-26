@@ -142,4 +142,26 @@ addLayer("t", {
         {key: "t", description: "T: textcoins", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return hasUpgrade("w",34) || player.t.unlocked},
+	upgrades: {
+		11: {
+			title: "A Textcoin",
+			description: "Made by lime.person in 2021/2022. Also x6 points.",
+			cost: new Decimal(1)
+		},
+		12: {
+			title: "Automation I",
+			description: "Automate prestige upgrades.",
+			cost: new Decimal(2)
+		},
+		13: {
+			title: "Automation II",
+			description: "Passively gain 1% of Prestige Points per second.",
+			cost: new Decimal(5)
+		},
+		21: {
+			title: "Challenge?",
+			description: "Unlock Challenges",
+			cost: new Decimal(15)
+		},
+	}
 })
