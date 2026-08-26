@@ -12,11 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.021",
-	name: "Textcoins",
+	num: "#0.024",
+	name: "Textcoin Expansion",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>#0.024</h3><br>
+	    - Added 8 new upgrades.<br>
+		- Added 1 new challenge.<br>
+		- Endgame: 6,000 Textcoins<br>
     <h3>#0.021</h3><br>
 	    - Added 6 new upgrades.<br>
 		- Added Textcoins layer.<br>
@@ -75,6 +79,10 @@ function getPointGen() {
 	if (hasUpgrade('t',22)) gain = gain.pow(1.01)
 	if (hasUpgrade('t',23)) gain = gain.times(7)
 	if (hasUpgrade('t',23)) gain = gain.div(2.5)
+	if (hasUpgrade('w',41)) gain = gain.times(4)
+	if (hasUpgrade('w',43)) gain = gain.times(3.3333)
+	if (hasChallenge('t',12)) gain = gain.pow(1.01)
+	if (inChallenge('t',12)) gain = gain.pow(0.1)
 	return gain
 }
 
@@ -125,7 +133,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.t.points.gte(new Decimal(500))
+	return player.t.points.gte(new Decimal(6e3))
 }
 
 
