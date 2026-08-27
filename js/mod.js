@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Textwall Tree",
 	author: "Textwall-SF",
 	pointsName: "points",
-	modFiles: ["layers/1.js", "layers/2.js", "tree.js"],
+	modFiles: ["layers/1.js", "layers/2.js", "layers/3.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -12,11 +12,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.024",
-	name: "Textcoin Expansion",
+	num: "#0.101",
+	name: "Enter the... Textwallers",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>#0.101</h3><br>
+	    - Added Textwallers.<br>
+	    - Added 5 new milestones.<br>
+		- Added 1 new challenge.<br>
+		- Endgame: 8 Textwallers<br>
     <h3>#0.024</h3><br>
 	    - Added 8 new upgrades.<br>
 		- Added 1 new challenge.<br>
@@ -81,8 +86,12 @@ function getPointGen() {
 	if (hasUpgrade('t',23)) gain = gain.div(2.5)
 	if (hasUpgrade('w',41)) gain = gain.times(4)
 	if (hasUpgrade('w',43)) gain = gain.times(3.3333)
+	if (hasMilestone('w',1)) gain = gain.times(30)
+	if (hasMilestone('w',5)) gain = gain.times(1e4)
+	if (hasMilestone('w',5)) gain = gain.pow(1.01)
 	if (hasChallenge('t',12)) gain = gain.pow(1.01)
 	if (inChallenge('t',12)) gain = gain.pow(0.1)
+	if (hasChallenge('t',21)) gain = gain.times(56.14)
 	return gain
 }
 
@@ -93,9 +102,9 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {
-    display = ""
+    display = `Endgame: 8 textwallers<br>`
 	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
-			display = display + "Stuck? Endgame: 500 textcoins"
+			display = display + "Stuck?"
     }
 	if ((player.points.lte(2.37e62)) && (player.points.gte(6.68e59))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59)) + " protons."
@@ -133,7 +142,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.t.points.gte(new Decimal(6e3))
+	return player.tw.points.gte(new Decimal(8))
 }
 
 
