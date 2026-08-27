@@ -228,8 +228,8 @@ addLayer("t", {
 			unlocked() {return hasUpgrade("t",32)}
 		},
 		41: {
-			title: "A new way of typing",
-			description: "Unlock chars.",
+			title: "The new textwallers",
+			description: "Unlock textwallers.",
 			cost: new Decimal(6e3),
 			unlocked() {return hasUpgrade("t",33)}
 		},
