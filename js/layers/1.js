@@ -26,6 +26,7 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
 		exp = new Decimal(1)
 		if (inChallenge("t", 11)) exp = exp.pow(0.25)
+		if (inChallenge("t", 21)) exp = exp.pow(0.1)
 		if (hasUpgrade("t", 32)) exp = exp.pow(1.01)
         return exp
     },
