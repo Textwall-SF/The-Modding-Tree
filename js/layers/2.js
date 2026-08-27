@@ -19,6 +19,7 @@ addLayer("w", {
 		if (hasUpgrade('w', 33)) mult = mult.times(2.022)
 		if (hasUpgrade('w', 42)) mult = mult.times(3)
 		if (hasUpgrade('w', 44)) mult = mult.times(upgradeEffect('w',44))
+		if (hasMilestone('tw', 2)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -30,6 +31,11 @@ addLayer("w", {
         {key: "w", description: "W: walls", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return hasUpgrade("p",34) || player.w.unlocked},
+	passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('tw',4)) Gen = 1
+        return Gen
+    },
 	upgrades: {
 		11: {
 			title: "TextWall, Start!",
@@ -162,6 +168,7 @@ addLayer("t", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasChallenge('t', 12)) mult = mult.times(4)
+		if (hasMilestone('tw', 3)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -271,5 +278,13 @@ addLayer("t", {
         canComplete: function() {return player.points.gte(1e3)},
 		unlocked() {return hasUpgrade("t",31)}
     },
-	}
+		21: {
+        name: "Another Fire",
+        challengeDescription: "Prestige Points are nerfed to ^0.1",
+        goalDescription: "10,000 points",
+        rewardDescription: "x56.14 points.",
+        canComplete: function() {return player.points.gte(1e4)},
+		unlocked() {return hasMilestone("tw",3)}
+    },
+  }
 })
