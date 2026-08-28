@@ -91,6 +91,8 @@ function getPointGen() {
 	if (hasUpgrade('t',23)) gain = gain.div(2.5)
 	if (hasUpgrade('w',41)) gain = gain.times(4)
 	if (hasUpgrade('w',43)) gain = gain.times(3.3333)
+	if (hasUpgrade('w',41)) gain = gain.times(5)
+	if (hasUpgrade('w',43)) gain = gain.times(10)
 	if (hasMilestone('tw',1)) gain = gain.times(30)
 	if (hasMilestone('tw',5)) gain = gain.times(1e4)
 	if (hasMilestone('tw',5)) gain = gain.pow(1.01)
@@ -130,16 +132,16 @@ var displayThings = [
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of sand."
 	}
 	if ((player.points.lte(8.42e98)) && (player.points.gte(1.18e97)) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of rice."
+			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.18e97)) + " grains of rice."
 	}
 	if ((player.points.lte(1.78e101)) && (player.points.gte(8.42e98))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " teaspoons."
+			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(8.42e98)) + " teaspoons."
 	}
 	if ((player.points.lte(2.37e104)) && (player.points.gte(1.78e101))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " bottles of wine."
+			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(1.78e101)) + " bottles of wine."
 	}
 	if ((player.points.lte("2.37e217")) && (player.points.gte(2.37e104))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " fridge-freezers."
+			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(2.37e104)) + " fridge-freezers."
 	}
 	if ((player.points.lte("4.26e412")) && (player.points.gte("2.37e217"))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.37e217)) + " Dimensions."
