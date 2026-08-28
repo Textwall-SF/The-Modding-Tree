@@ -91,7 +91,7 @@ addLayer("x", {
         "Multiplier": {
             content: [
                 "main-display",
-                ["display-text", function() {return "You are gaining " + format(mg) + " multiplier per second"}],
+                ["display-text", function() { return "You are gaining " + format(typeof mg !== 'undefined' ? mg : 0) + " multiplier per second"}],
                 "blank",
                 "upgrades"
             ],
@@ -118,7 +118,8 @@ addLayer("x", {
             title: `Multiplier<sup>Multiplier</sup>`,
             description: "Multiply multiplier gain by multiplier",
             effect() {
-                return player.x.points.add(1).pow(0.05)
+              if (!player.x) return new Decimal(1) // Prevents early loading crash
+              return player.x.points.add(1).pow(0.05)
             },
             effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
             cost: new Decimal(500),
