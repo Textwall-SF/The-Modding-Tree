@@ -95,11 +95,11 @@ addLayer("x", {
                 "blank",
                 "upgrades"
             ],
+		},
 		"Credit": {
 			content: [
 				"infoboxes"
 			],
-		    },
         },
     },
     upgrades: {
