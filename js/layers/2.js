@@ -182,6 +182,11 @@ addLayer("t", {
         {key: "t", description: "T: textcoins", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return hasUpgrade("w",34) || player.t.unlocked},
+	passiveGeneration() {
+        let Gen = 0
+        if(hasMilestone('tw',6)) Gen = 1
+        return Gen
+    },
 	upgrades: {
 		11: {
 			title: "A Textcoin",
