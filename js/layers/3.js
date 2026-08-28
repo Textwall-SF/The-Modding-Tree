@@ -58,7 +58,7 @@ addLayer("tw", {
       done() { return player.tw.points.gte(8);}, // Used to determine when to give the milestone
       effectDescription: "Passively gain 1% of textcoins per second.",
       },
-      5: {
+      7: {
       requirementDescription: "10 textwallers",
       done() { return player.tw.points.gte(10);}, // Used to determine when to give the milestone
       effectDescription: "Unlock multiplier.",
