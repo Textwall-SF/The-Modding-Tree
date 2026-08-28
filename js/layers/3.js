@@ -70,15 +70,15 @@ addLayer("x", {
     symbol: "×", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
-        unlocked: false,
-		    points: new Decimal(0),
+        unlocked: true,
+		points: new Decimal(0),
     }},
     color: "#FF0000",
     requires: new Decimal(0), // Can be a function that takes requirement increases into account
     resource: "multiplier", // Name of prestige currency
     baseResource: "textwallers", // Name of resource prestige is based on
     baseAmount() {return player.tw.points}, // Get the current amount of baseResource
-    type: "custom", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
