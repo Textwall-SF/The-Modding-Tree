@@ -20,6 +20,7 @@ addLayer("w", {
 		if (hasUpgrade('w', 42)) mult = mult.times(3)
 		if (hasUpgrade('w', 44)) mult = mult.times(upgradeEffect('w',44))
 		if (hasMilestone('tw', 2)) mult = mult.times(10)
+		if (hasUpgrade('x', 14)) mult = mult.times(61729)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -169,6 +170,7 @@ addLayer("t", {
         mult = new Decimal(1)
 		if (hasChallenge('t', 12)) mult = mult.times(4)
 		if (hasMilestone('tw', 3)) mult = mult.times(3)
+		if (hasUpgrade('x', 12)) mult = mult.times(56.14)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
