@@ -12,11 +12,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.101",
-	name: "Enter the... Textwallers",
+	num: "#0.111",
+	name: "Not a line, but...",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>#0.111</h3><br>
+	    - Added Multiplier.<br>
+	    - Added 2 new milestones.<br>
+		- Added 4 new upgrades.<br>
+		- Endgame: 30,000 Multiplier<br>
     <h3>#0.101</h3><br>
 	    - Added Textwallers.<br>
 	    - Added 5 new milestones.<br>
@@ -124,6 +129,18 @@ var displayThings = [
 	if ((player.points.lte(1.18e97)) && (player.points.gte(1.47e94))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of sand."
 	}
+	if ((player.points.lte(8.42e98)) && (player.points.gte(1.18e97)) {
+			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of rice."
+	}
+	if ((player.points.lte(1.78e101)) && (player.points.gte(8.42e98))) {
+			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " teaspoons."
+	}
+	if ((player.points.lte(2.37e104)) && (player.points.gte(1.78e101))) {
+			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " bottles of wine."
+	}
+	if ((player.points.lte("2.37e217")) && (player.points.gte(2.37e104))) {
+			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " fridge-freezers."
+	}
 	if ((player.points.lte("4.26e412")) && (player.points.gte("2.37e217"))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.37e217)) + " Dimensions."
 	}
@@ -142,7 +159,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.tw.points.gte(new Decimal(8))
+	return player.x.points.gte(new Decimal(3e4))
 }
 
 
