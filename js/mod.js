@@ -91,8 +91,6 @@ function getPointGen() {
 	if (hasUpgrade('t',23)) gain = gain.div(2.5)
 	if (hasUpgrade('w',41)) gain = gain.times(4)
 	if (hasUpgrade('w',43)) gain = gain.times(3.3333)
-	if (hasUpgrade('x',11)) gain = gain.times(5)
-	if (hasUpgrade('x',12)) gain = gain.times(10)
 	if (hasMilestone('tw',1)) gain = gain.times(30)
 	if (hasMilestone('tw',5)) gain = gain.times(1e4)
 	if (hasMilestone('tw',5)) gain = gain.pow(1.01)
@@ -109,9 +107,9 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {
-    display = `Endgame: 8 textwallers<br>`
+    display = `Endgame: 10 textwallers<br>`
 	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
-			display = display + "Stuck?"
+			display = display + "Stuck? Credit to Antimatter Dimensions for how much of a specific object or writing down your amount."
     }
 	if ((player.points.lte(2.37e62)) && (player.points.gte(6.68e59))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59)) + " protons."
@@ -161,7 +159,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.x.points.gte(new Decimal(3e4))
+	return player.t.points.gte(new Decimal(10))
 }
 
 
