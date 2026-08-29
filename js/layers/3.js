@@ -80,8 +80,7 @@ addLayer("x", {
     baseResource: "points", 
     baseAmount() { return player.points }, 
     
-    // Changed type to "custom" so TMT engine does not throw errors when trying to run background code on a "none" layer type.
-    type: "custom", 
+    type: "normal", 
     exponent: 0.1, 
 
     infoboxes: {
