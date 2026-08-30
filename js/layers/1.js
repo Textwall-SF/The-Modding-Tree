@@ -16,18 +16,10 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 		if (hasUpgrade(this.layer, 32)) mult = mult.times(2)
-		if (hasUpgrade("w", 23)) mult = mult.times(5)
-		if (hasUpgrade("w", 31)) mult = mult.times(upgradeEffect('w',31))
-		if (hasUpgrade(this.layer, 42)) mult = mult.times(2.5)
-		if (hasChallenge("t", 11)) mult = mult.times(66.66)
-		if (hasMilestone("tw", 2)) mult = mult.times(10)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
 		exp = new Decimal(1)
-		if (inChallenge("t", 11)) exp = exp.pow(0.25)
-		if (inChallenge("t", 21)) exp = exp.pow(0.1)
-		if (hasUpgrade("t", 32)) exp = exp.pow(1.01)
         return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -35,17 +27,11 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-	autoUpgrade(){return hasUpgrade("t",12)},
-	passiveGeneration() {
-        let Gen = 0
-        if(hasUpgrade('t',13)) Gen = 1
-        return Gen
-    },
 	infoboxes:{
-            lore: {
+            help: {
                 title: "Important notice",
-                body: "<b>So, removed some of the confusion. Also, I AM NOT NullArea, I AM Textwall-SF!</b><br> Welcome to the first layer, Prestige. Goal is to get a lot of points. <br> <i>The179UCETile, qwas and anon responded in tw.2s4.me so the game is confusing and later it updated for not confusing at all.</i>",
-            }
+				body: "Removed all of the layers, this confusing one is https://raw.githack.com/The179UCETile/wextwall-tree/patch-1/index.html"
+			},
         },
 	upgrades: {
 		11: {
@@ -58,7 +44,7 @@ addLayer("p", {
         cost: new Decimal(1)
 	},
 		12: {
-        title: "New wall",
+        title: "Repeating itself",
         description: "Points boosted on points, again.",
 		effect() {
             return player.points.add(1).pow(0.2)
@@ -70,7 +56,7 @@ addLayer("p", {
         },
 	},
 		13: {
-        title: "Extender",
+        title: "Extending",
         description: "Boosts points by *5",
 		cost: new Decimal(5),
 		unlocked() {
@@ -78,7 +64,7 @@ addLayer("p", {
         },
 		},
 	    14: {
-        title: "Adding",
+        title: "Addition",
         description: "Add +20 to point base",
 		cost: new Decimal(15),
 		unlocked() {
@@ -107,7 +93,7 @@ addLayer("p", {
         },
 		},
 		23: {
-        title: "Base Shifting",
+        title: "Base Shift",
         description: "*1.5 point gain",
 		cost: new Decimal(130),
 		unlocked() {
@@ -115,7 +101,7 @@ addLayer("p", {
         },
 		},
 		24: {
-        title: "Stacking up",
+        title: "Stacking Up",
         description: "*3 point gain",
 		cost: new Decimal(300),
 		unlocked() {
@@ -123,7 +109,7 @@ addLayer("p", {
         },
 		},
 		31: {
-        title: "New Walls?",
+        title: "Tripler",
         description: "*3 point gain",
 		cost: new Decimal(620),
 		unlocked() {
@@ -131,7 +117,7 @@ addLayer("p", {
         },
 		},
 		32: {
-        title: "Leap up",
+        title: "Leap Up",
         description: "*2 prestige point gain",
 		cost: new Decimal(1000),
 		unlocked() {
@@ -147,44 +133,41 @@ addLayer("p", {
         },
 		},
 		34: {
-        title: "Enter the... TextWall!",
-        description: "Unlock Walls layer.",
+        title: "Multiplier",
+        description: "Unlock Multiplier",
 		cost: new Decimal(5000),
 		unlocked() {
                 return hasUpgrade('p', 33)
         },
 		},
-		41: {
-        title: "The new start",
-        description: "*5 point gain",
-		cost: new Decimal(1e12),
-		unlocked() {
-                return hasUpgrade('w', 32)
-        },
-		},
-		42: {
-        title: "NEW TEXTWALLERS?",
-        description: "*2.5 prestige point gain",
-		cost: new Decimal(5e12),
-		unlocked() {
-                return hasUpgrade('p', 41)
-        },
-		},
-		43: {
-        title: "Point Booster II",
-        description: "*7 point gain",
-		cost: new Decimal(9e13),
-		unlocked() {
-                return hasUpgrade('p', 42)
-        },
-		},
-		44: {
-        title: "Universal Reconstructing",
-        description: "*3.3 point gain",
-		cost: new Decimal(1e15),
-		unlocked() {
-                return hasUpgrade('p', 43)
-        },
-	  },
 	}
+})
+addLayer("x", {
+    name: "multiplier", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#fcfcfc",
+    requires: new Decimal(10), // Can be a function that takes requirement increases into account
+    resource: "prestige points", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+		exp = new Decimal(1)
+        return exp
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "?", description: "???: None layer (Multiplier)", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return true},
 })
