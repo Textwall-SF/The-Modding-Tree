@@ -144,13 +144,13 @@ addLayer("p", {
 })
 addLayer("x", {
     name: "multiplier", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "×", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#fcfcfc",
+    color: "#ff0000",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -166,8 +166,52 @@ addLayer("x", {
         return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
+	branches: ["p"],
     hotkeys: [
         {key: "?", description: "???: None layer (Multiplier)", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){return hasUpgrade('p',34) || player.x.unlocked},
+	tabFormat: {
+        "Multiplier": {
+            content: [
+                "main-display",
+                ["display-text", function() {return "You are gaining " + format(mg) + " multiplier per second"}],
+                "blank",
+                "upgrades"
+            ],
+        },
+    },
+	upgrades: {
+        11: {
+            title: "Multiplication",
+            description: "x5 point and multiplier gain",
+            cost: new Decimal(20),
+        },
+        12: {
+            title: "Multiplication+",
+            description: "x10 point and multiplier gain",
+            cost: new Decimal(100),
+            unlocked() {return hasUpgrade('x',11)}
+        },
+        13: {
+            title: "Multiplier²",
+            description: "Multiply multiplier gain by multiplier.",
+            effect() {
+                return player.x.points.add(1).pow(0.05)
+            },
+            effectDisplay() {return 'x' + format(upgradeEffect(this.layer, this.id))},
+            tooltip: "(mult+1)<sup>0.05</sup>",
+            cost: new Decimal(500),
+            unlocked() {return hasUpgrade('x',11)}
+        },
+    },
+	update(diff){
+        let gain = new Decimal(0)
+        if (player.x.unlocked) gain = gain.add(1)
+        if (hasUpgrade('x', 11)) gain = gain.times(5)
+        if (hasUpgrade('x', 12)) gain = gain.times(10)
+        if (hasUpgrade('x', 13)) gain = gain.times(upgradeEffect('x', 13))
+        mg = gain
+        player.x.points = player.x.points.add(gain.times(diff))
+    },
 })
