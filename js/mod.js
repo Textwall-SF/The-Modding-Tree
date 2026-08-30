@@ -19,8 +19,9 @@ let VERSION = {
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>#0.201</h3><br>
 		- 2 Prestige Layers: Prestige Points, Multiplier.<br>
-		- Added 16 new upgrades.<br>
-		- Endgame: 5,000 Multiplier`
+		- Added 15 new upgrades.<br>
+		- Endgame: 5,000 Multiplier<br>
+    <h2>Older changelog entries not available</h2>`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -53,6 +54,8 @@ function getPointGen() {
 	if (hasUpgrade('p',24)) gain = gain.times(3)
 	if (hasUpgrade('p',31)) gain = gain.times(3)
 	if (hasUpgrade('p',33)) gain = gain.times(2)
+	if (hasUpgrade('x',11)) gain = gain.times(5)
+	if (hasUpgrade('x',12)) gain = gain.times(10)
 	return gain
 }
 
@@ -115,7 +118,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.t.points.gte(new Decimal(10))
+	return player.x.points.gte(new Decimal(5e3))
 }
 
 
