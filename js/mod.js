@@ -85,7 +85,7 @@ var displayThings = [
 	if ((player.points.lte(1.18e97)) && (player.points.gte(1.47e94))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of sand."
 	}
-	if ((player.points.lte(8.42e98)) && (player.points.gte(1.18e97)) {
+	if ((player.points.lte(8.42e98)) && (player.points.gte(1.18e97))) {
 			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.18e97)) + " grains of rice."
 	}
 	if ((player.points.lte(1.78e101)) && (player.points.gte(8.42e98))) {
