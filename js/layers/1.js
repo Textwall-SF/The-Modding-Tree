@@ -170,7 +170,7 @@ addLayer("x", {
     hotkeys: [
         {key: "?", description: "???: None layer (Multiplier)", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasUpgrade('p',34) || player.x.unlocked},
+    layerShown(){return (hasUpgrade('p',34)) || player.x.unlocked},
 	tabFormat: {
         "Multiplier": {
             content: [
