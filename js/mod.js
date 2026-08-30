@@ -1,8 +1,8 @@
 let modInfo = {
-	name: "The Textwall Tree",
+	name: "The Incremental Tree Rewritten",
 	author: "Textwall-SF",
 	pointsName: "points",
-	modFiles: ["layers/1.js", "layers/2.js", "layers/3.js", "tree.js"],
+	modFiles: ["layers/1.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
@@ -12,37 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.111",
-	name: "Not a line, but...",
+	num: "#0.201",
+	name: "The Great Wipeout",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-    <h3>#0.111</h3><br>
-	    - Added Multiplier.<br>
-	    - Added 2 new milestones.<br>
-		- Added 4 new upgrades.<br>
-		- Endgame: 30,000 Multiplier<br>
-    <h3>#0.101</h3><br>
-	    - Added Textwallers.<br>
-	    - Added 5 new milestones.<br>
-		- Added 1 new challenge.<br>
-		- Endgame: 8 Textwallers<br>
-    <h3>#0.024</h3><br>
-	    - Added 8 new upgrades.<br>
-		- Added 1 new challenge.<br>
-		- Endgame: 6,000 Textcoins<br>
-    <h3>#0.021</h3><br>
-	    - Added 6 new upgrades.<br>
-		- Added Textcoins layer.<br>
-		- Added 1 challenge.<br>
-		- Endgame: 500 Textcoins<br>
-    <h3>#0.013</h3><br>
-	    - Added 8 new upgrades.<br>
-		- Endgame: 500,000 walls<br>
-	<h3>#0.011</h3><br>
-		- 2 Prestige Layers: Prestige Points, walls.<br>
-		- Added 20 new upgrades.<br>
-		- Endgame: 250 walls`
+	<h3>#0.201</h3><br>
+		- 2 Prestige Layers: Prestige Points, Multiplier.<br>
+		- Added 16 new upgrades.<br>
+		- Endgame: 5,000 Multiplier`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -75,28 +53,6 @@ function getPointGen() {
 	if (hasUpgrade('p',24)) gain = gain.times(3)
 	if (hasUpgrade('p',31)) gain = gain.times(3)
 	if (hasUpgrade('p',33)) gain = gain.times(2)
-	if (hasUpgrade('w',11)) gain = gain.add(100)
-	if (hasUpgrade('w',12)) gain = gain.times(upgradeEffect('w',12))
-	if (hasUpgrade('w',13)) gain = gain.times(4)
-	if (hasUpgrade('w',14)) gain = gain.times(2.5)
-	if (hasUpgrade('w',21)) gain = gain.add(2020)
-	if (hasUpgrade('w',22)) gain = gain.times(2.021)
-	if (hasUpgrade('w',24)) gain = gain.times(100)
-	if (hasUpgrade('p',41)) gain = gain.times(5)
-	if (hasUpgrade('p',43)) gain = gain.times(7)
-	if (hasUpgrade('p',44)) gain = gain.times(3.3)
-	if (hasUpgrade('t',11)) gain = gain.times(6)
-	if (hasUpgrade('t',22)) gain = gain.pow(1.01)
-	if (hasUpgrade('t',23)) gain = gain.times(7)
-	if (hasUpgrade('t',23)) gain = gain.div(2.5)
-	if (hasUpgrade('w',41)) gain = gain.times(4)
-	if (hasUpgrade('w',43)) gain = gain.times(3.3333)
-	if (hasMilestone('tw',1)) gain = gain.times(30)
-	if (hasMilestone('tw',5)) gain = gain.times(1e4)
-	if (hasMilestone('tw',5)) gain = gain.pow(1.01)
-	if (hasChallenge('t',12)) gain = gain.pow(1.01)
-	if (inChallenge('t',12)) gain = gain.pow(0.1)
-	if (hasChallenge('t',21)) gain = gain.times(56.14)
 	return gain
 }
 
@@ -107,7 +63,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {
-    display = `Endgame: 10 textwallers<br>`
+    display = `Endgame: 5,000 multiplier<br>`
 	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
 			display = display + "Stuck? Credit to Antimatter Dimensions for how much of a specific object or writing down your amount."
     }
