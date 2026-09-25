@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "The Incremental Tree Rewritten",
+	name: "Make NullArea not confusing at all simulator",
 	author: "Textwall-SF",
-	pointsName: "points",
+	pointsName: "anti-confusion",
 	modFiles: ["layers/1.js", "tree.js"],
 
 	discordName: "",
@@ -12,15 +12,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "#0.201",
-	name: "The Great Wipeout",
+	num: "#1.001",
+	name: "NullArea is confusing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>#0.201</h3><br>
-		- 2 Prestige Layers: Prestige Points, Multiplier.<br>
-		- Added 15 new upgrades.<br>
-		- Endgame: 5,000 Multiplier<br>
+	<h3>#1.001</h3><br>
+		- 2 Prestige Layers: Anti-Confusion Essence and Confusion Essence<br>
+		- Added 20 new upgrades.<br>
+		- Endgame: 100 confusion essence<br>
     <h2>Older changelog entries not available</h2>`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
@@ -45,17 +45,7 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	if (hasUpgrade('p',11)) gain = gain.times(upgradeEffect('p',11))
-	if (hasUpgrade('p',12)) gain = gain.times(upgradeEffect('p',12))
-	if (hasUpgrade('p',13)) gain = gain.times(2)
-	if (hasUpgrade('p',14)) gain = gain.add(20)
-	if (hasUpgrade('p',21)) gain = gain.times(upgradeEffect('p',21))
-	if (hasUpgrade('p',22)) gain = gain.times(2)
-	if (hasUpgrade('p',23)) gain = gain.times(1.5)
-	if (hasUpgrade('p',24)) gain = gain.times(3)
-	if (hasUpgrade('p',31)) gain = gain.times(3)
-	if (hasUpgrade('p',33)) gain = gain.times(2)
-	if (hasUpgrade('x',11)) gain = gain.times(5)
-	if (hasUpgrade('x',12)) gain = gain.times(10)
+	if (hasUpgrade('p',12)) gain = gain.times(2)
 	return gain
 }
 
@@ -66,51 +56,36 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {
-    display = `Endgame: 5,000 multiplier<br>`
-	if ((player.points.lte(6.68e59)) && (player.points.gte(1e25))) {
-			display = display + "Stuck? Credit to Antimatter Dimensions for how much of a specific object or writing down your amount."
-    }
-	if ((player.points.lte(2.37e62)) && (player.points.gte(6.68e59))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(6.68e59)) + " protons."
-    }
-	if ((player.points.lte(1.71e75)) && (player.points.gte(2.37e62))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.37e62)) + " nuclei."
+    display = `Endgame: 100 confusion essence<br>`
+	if ((player.points.lte(100)) && (player.points.gte(1))) {
+			display = display + "NullArea has 1.00e100 confusion essence"
 	}
-	if ((player.points.lte(1.18e84)) && (player.points.gte(1.71e75))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.71e75)) + " Hydrogen atoms."
+	if ((player.points.lte(1e4)) && (player.points.gte(100))) {
+			display = display + "NullArea has 1.00e90 confusion essence"
 	}
-	if ((player.points.lte(2.13e88)) && (player.points.gte(1.18e84))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.18e84)) + " viruses."
+	if ((player.points.lte(1e7)) && (player.points.gte(1e4))) {
+			display = display + "NullArea has 1.00e85 confusion essence"
 	}
-	if ((player.points.lte(1.47e94)) && (player.points.gte(2.13e88))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.13e88)) + " red blood cells."
+	if ((player.points.lte(1e10)) && (player.points.gte(1e7))) {
+			display = display + "NullArea has 1.00e80 confusion essence"
 	}
-	if ((player.points.lte(1.18e97)) && (player.points.gte(1.47e94))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.47e94)) + " grains of sand."
+	if ((player.points.lte(1e14)) && (player.points.gte(1e10))) {
+			display = display + "NullArea has 1.00e75 confusion essence"
 	}
-	if ((player.points.lte(8.42e98)) && (player.points.gte(1.18e97))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(1.18e97)) + " grains of rice."
+	if ((player.points.lte(1e18)) && (player.points.gte(1e14))) {
+			display = display + "NullArea has 1.00e70 confusion essence"
 	}
-	if ((player.points.lte(1.78e101)) && (player.points.gte(8.42e98))) {
-			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(8.42e98)) + " teaspoons."
+	if ((player.points.lte(1e22)) && (player.points.gte(1e18))) {
+			display = display + "NullArea has 1.00e60 confusion essence"
 	}
-	if ((player.points.lte(2.37e104)) && (player.points.gte(1.78e101))) {
-			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(1.78e101)) + " bottles of wine."
+	if ((player.points.lte(1e26)) && (player.points.gte(1e22))) {
+			display = display + "NullArea has 1.00e55 confusion essence"
 	}
-	if ((player.points.lte("2.37e217")) && (player.points.gte(2.37e104))) {
-			display = display + "If every point was a planck volume, then you can fill " + player.points.div(new Decimal(2.37e104)) + " fridge-freezers."
+    if ((player.points.lte(1e31)) && (player.points.gte(1e26))) {
+			display = display + "NullArea has 1.00e50 confusion essence"
 	}
-	if ((player.points.lte("4.26e412")) && (player.points.gte("2.37e217"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal(2.37e217)) + " Dimensions."
-	}
-	if ((player.points.lte("2.37e65104")) && (player.points.gte("4.26e412"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("4.26e412")) + " Infinity Dimensions."
-	}
-	if ((player.points.lte("1e100000")) && (player.points.gte("2.37e65104"))) {
-			display = display + "If every point was a planck volume, then you can make " + player.points.div(new Decimal("2.37e65104")) + " Time Dimensions."
-	}
-	if ((player.points.gte("1e100000")) && (player.points.lte("10^^1.79e308"))) {
-			display = display + "If you wrote 1 number per second, writing down your point amount will need " + formatTime(player.points.add(1).log10()) + "; to write down your point amount."
+	if ((player.points.lte(1e35)) && (player.points.gte(1e31))) {
+			display = display + "NullArea has 1.00e45 confusion essence"
 	}
 	return display
   },
@@ -118,7 +93,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.x.points.gte(new Decimal(5e3))
+	return player.c.points.gte(new Decimal(100))
 }
 
 
